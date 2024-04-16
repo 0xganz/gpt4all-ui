@@ -28,7 +28,7 @@ from sse_starlette.sse import EventSourceResponse
 
 
 class Settings(BaseSettings):
-    model: str = "/models"
+    model: str
     n_ctx: int = 2048
     n_batch: int = 8
     n_threads: int = int(os.cpu_count() / 2) or 1
@@ -49,7 +49,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-settings = Settings()
+settings = Settings(model=os.getenv("MODEL", "/models"))
 llama = llama_cpp.Llama(
     model_path=settings.model,
     f16_kv=settings.f16_kv,
