@@ -51,7 +51,7 @@ app.add_middleware(
 )
 settings = Settings()
 llama = llama_cpp.Llama(
-    settings.model,
+    model_path=settings.model,
     f16_kv=settings.f16_kv,
     use_mlock=settings.use_mlock,
     embedding=settings.embedding,
