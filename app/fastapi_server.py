@@ -15,15 +15,13 @@ import os
 import json
 from typing import List, Optional, Literal, Union, Iterator, Dict
 
-from pydantic.v1 import create_model_from_typeddict
 from typing_extensions import TypedDict
 
 import llama_cpp
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic.v1 import BaseModel, Field
-from pydantic_settings import BaseSettings
+from pydantic import BaseModel, BaseSettings, Field, create_model_from_typeddict
 from sse_starlette.sse import EventSourceResponse
 
 
