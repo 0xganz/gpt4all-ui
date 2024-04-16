@@ -14,18 +14,21 @@ Then visit http://localhost:8000/docs to see the interactive API docs.
 import os
 import json
 from typing import List, Optional, Literal, Union, Iterator, Dict
+
+from pydantic.v1 import create_model_from_typeddict
 from typing_extensions import TypedDict
 
 import llama_cpp
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, BaseSettings, Field, create_model_from_typeddict
+from pydantic.v1 import BaseModel, Field
+from pydantic_settings import BaseSettings
 from sse_starlette.sse import EventSourceResponse
 
 
 class Settings(BaseSettings):
-    model: str
+    model: str = "/models"
     n_ctx: int = 2048
     n_batch: int = 8
     n_threads: int = int(os.cpu_count() / 2) or 1
