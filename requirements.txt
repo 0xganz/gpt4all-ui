@@ -1,5 +1,6 @@
 llama-cpp-python
 uvicorn
-fastapi
+fastapi==0.110.1
 sse_starlette
 typing_extensions
+pydantic-settings

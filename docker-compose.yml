@@ -18,4 +18,4 @@ services:
     ports:
       - 8000:8000
     environment:
-      - MODEL=/models/7B/gpt4all-lora-quantized.ggml
+      - MODEL=/models/nous-hermes-llama2-13b.Q4_0.gguf
